@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> برای تین‌تین کوچولو </title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700&display=swap');
+    
+    :root {
+      --primary-color: #ff2d75;
+      --secondary-color: #ff8fab;
+      --dark-color: #d81b60;
+      --light-color: #fff0f3;
+      --text-color: #333;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #fff0f3 0%, #f8f8ff 100%);
+      font-family: 'Vazirmatn', sans-serif;
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      line-height: 1.8;
+    }
+    
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+    
+    h1 {
+      font-family: 'Lalezar', cursive;
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      margin: 15px 0;
+      color: var(--text-color);
+    }
+    
+    .love-message {
+      background-color: var(--light-color);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 25px 0;
+      border-left: 5px solid var(--primary-color);
+    }
+    
+    .photo-frame {
+      width: 100%;
+      max-width: 300px;
+      margin: 30px auto;
+      padding: 10px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(232, 30, 99, 0.3);
+    }
+    
+    .photo-frame img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      border: 3px solid white;
+    }
+    
+    .btn {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-family: 'Lalezar', cursive;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(232, 30, 99, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(232, 30, 99, 0.5);
+    }
+    
+    .btn:active {
+      transform: translateY(1px);
+    }
+    
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .heart {
+      position: absolute;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: var(--secondary-color);
+      transform: rotate(45deg);
+      opacity: 0;
+      animation: float 6s ease-in infinite;
+    }
+    
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: var(--secondary-color);
+      border-radius: 50%;
+    }
+    
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    
+    .heart::after {
+      top: 0;
+      left: -10px;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: rotate(45deg) translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: rotate(45deg) translateY(-100vh) scale(1);
+        opacity: 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" id="hearts-container"></div>
+  
+  <div class="container">
+    <h1>❤️ تینا، تو قلب منی ❤️</h1>
+    
+    <div class="love-message">
+      <p>تینا عزیزم، از وقتی وارد زندگی من شدی، دنیام رنگ و بوی دیگه‌ای گرفت...</p>
+      <p>تو همون فرشته‌ای هستی که همیشه تو رویاهام می‌دیدم </p>
+      <p>هر روز با تو، بهترین روز زندگی منه</p>
+    </div>
+    
+    <div class="photo-frame">
+      <img src="https://s6.uupload.ir/files/img_20250714_151258_ewam.jpg" alt="از طرف نینی‌ت🎀">
+    </div>
+    
+    <button id="playBtn" class="btn">
+      <span id="btnText">پخش آهنگ تینا</span> 
+      <span id="btnIcon">🎶</span>
+    </button>
+    
+    <audio id="tinaSong" preload="auto">
+      <source src="https://media1.vocaroo.com/mp3/11jbWcUZ0o0W" type="audio/mpeg">
+      مرورگر شما از پخش آهنگ پشتیبانی نمی‌کند
+    </audio>
+  </div>
+
+  <script>
+    // پخش آهنگ با کنترل بهتر
+    const playBtn = document.getElementById('playBtn');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+    const tinaSong = document.getElementById('tinaSong');
+    let isPlaying = false;
+    
+    playBtn.addEventListener('click', function() {
+      if (isPlaying) {
+        tinaSong.pause();
+        btnText.textContent = 'پخش آهنگ تینا';
+        btnIcon.textContent = '🎶';
+        isPlaying = false;
+      } else {
+        tinaSong.play()
+          .then(() => {
+            btnText.textContent = 'توقف آهنگ';
+            btnIcon.textContent = '❚❚';
+            isPlaying = true;
+          })
+          .catch(error => {
+            alert('برای پخش آهنگ، لطفاً با صفحه تعامل داشته باشید (مثلاً یک کلیک کنید)');
+            console.error('خطا در پخش آهنگ:', error);
+          });
+      }
+    });
+    
+    // وقتی آهنگ تمام شد
+    tinaSong.addEventListener('ended', function() {
+      btnText.textContent = 'پخش آهنگ تینا';
+      btnIcon.textContent = '🎶';
+      isPlaying = false;
+    });
+    
+    // ایجاد قلب‌های شناور
+    function createHearts() {
+      const heartsContainer = document.getElementById('hearts-container');
+      const heartCount = 15;
+      
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('span');
+        heart.classList.add('heart');
+        
+        // موقعیت تصادفی
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        
+        // اندازه تصادفی
+        const size = Math.random() * 15 + 10;
+        heart.style.width = size + 'px';
+        heart.style.height = size + 'px';
+        
+        // تاخیر و مدت زمان انیمیشن
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+        
+        heartsContainer.appendChild(heart);
+      }
+    }
+    
+    // اجرای اسکریپت پس از لود صفحه
+    window.addEventListener('load', function() {
+      createHearts();
+      
+      // برای حل مشکل پخش خودکار در برخی مرورگرها
+      document.body.addEventListener('click', function initAudio() {
+        tinaSong.volume = 0.5;
+        document.body.removeEventListener('click', initAudio);
+      }, { once: true });
+    });
+  </script>
+</body>
+</html>
